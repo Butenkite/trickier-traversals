@@ -11,7 +11,12 @@ public class Traversals {
    * @return the sum of leaf node values, or 0 if the tree is null
    */
   public static int sumLeafNodes(TreeNode<Integer> node) {
-    return 0;
+    if(node.value == null) return 0;
+    int leftVal = sumLeafNodes(node.left);
+    int rightVal = sumLeafNodes(node.right);
+    int sum = leftVal + rightVal;
+    if(node.left == null && node.right == null) return sum + node.value;
+    return sum;
   }
 
   /**
@@ -23,7 +28,12 @@ public class Traversals {
    * @return the count of internal nodes, or 0 if the tree is null
    */
   public static int countInternalNodes(TreeNode<Integer> node) {
-    return 0;
+    if(node == null) return 0;
+    int leftVal = countInternalNodes(node.left);
+    int rightVal = countInternalNodes(node.right);
+    int sum = leftVal + rightVal;
+    if(node.left == null && node.right == null) return sum;
+    return sum + 1;
   }
 
   /**
